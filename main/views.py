@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, ListAPIView
 from main.models import Module
-from main.serializers import ModuleSerializer
+from main.serializers import ModuleSerializer, ModuleListSerializer
 
 
 # Create your views here.
@@ -10,13 +9,10 @@ class ModuleCreateAPIView(CreateAPIView):
     queryset = Module.objects.all()
     serializer_class = ModuleSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-
 
 class ModuleListAPIView(ListAPIView):
     """LessonListAPIView endpoint"""
-    serializer_class = ModuleSerializer
+    serializer_class = ModuleListSerializer
     queryset = Module.objects.all()
 
 

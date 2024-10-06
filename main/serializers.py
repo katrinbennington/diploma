@@ -6,4 +6,10 @@ from main.models import Module
 class ModuleSerializer(ModelSerializer):
     class Meta:
         model = Module
+        fields = ("name", "description")
+
+
+class ModuleListSerializer(ModelSerializer):
+    class Meta:
+        model = Module
         fields = "__all__"
